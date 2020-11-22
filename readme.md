@@ -19,7 +19,7 @@ To start run `npm start`
 You can change any of the start up scripts etc to what fits you best, this is just a sample repo to get an Express/React app fast.
 
 ## AWS deployment EC2 (amazon linux)
-1. create ec2 instance and ssh using private key
+1. create ec2 instance and ssh using private key, when creating open port 80 for inbound rules
 1. `sudo yum update -y`
 1. `sudo install git -y`
 1. `sudo install nginx` command will say to run a different command, copy paste that and run it
