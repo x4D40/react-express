@@ -1,13 +1,12 @@
-import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function Home() {
-  return(<p>Home</p>)
+  return(<p>Home page</p>)
 }
 
 function Test() {
-  return(<p>Test</p>)
+  return(<p>Test page</p>)
 }
 
 function App() {

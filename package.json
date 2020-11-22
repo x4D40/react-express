@@ -1,12 +1,8 @@
 {
-  "name": "sample-react-express",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
-    "start": "npm run build && npm run start:fast",
+    "start": "npm run build && npm run start:server",
     "build": "cd client && npm run build",
-    "start:fast": "node server/server.js",
+    "start:server": "node server/server.js",
     "preinstall": "cd client && npm i"
   },
   "author": "",
