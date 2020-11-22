@@ -42,6 +42,6 @@ server {
 }
 ```
 1. `sudo service nginx restart`
-1. clone your repo and run `npm i` then `npm start &`, the & will push app into background, to stop top `fg` then press `ctrl+c`
+1. clone your repo and run `npm i` then `npm start &`, the & will push app into background, to stop type `fg` then press `ctrl+c`
 Feel free to change any of the config or use a different reverse proxy, you should also make sure you are using correct user permissions  
 The app should be live at the URL of your ec2 instace
