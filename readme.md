@@ -11,7 +11,7 @@ To start run `npm start`
 - `server.js` minimal setup for express server, if you need to add cors or other middleware that can be done here
 
 ## Client
-- React front end, `client-public` folder doesnt have to be changed unless you want to add public files
+- React front end, `client/public` folder doesnt have to be changed unless you want to add public files
 - App.js has the browser router set up to route different pages
   - there is a landing page at `/` and a test page at `/test`
 
@@ -19,7 +19,7 @@ To start run `npm start`
 You can change any of the start up scripts etc to what fits you best, this is just a sample repo to get an Express/React app fast.
 
 ## AWS deployment EC2 (amazon linux)
-1. create ec2 instance and ssh using private key
+1. create ec2 instance and ssh using private key, when creating open port 80 for inbound rules
 1. `sudo yum update -y`
 1. `sudo install git -y`
 1. `sudo install nginx` command will say to run a different command, copy paste that and run it
@@ -28,7 +28,7 @@ You can change any of the start up scripts etc to what fits you best, this is ju
 1. `nvm install node`
 1. `sudo vim /etc/nginx/nginx.conf`
 Find the server config area and put this:
-
+```
 server {
    listen         80 default_server;
    listen         [::]:80 default_server;
@@ -40,7 +40,8 @@ server {
        proxy_set_header Host $host;
    }
 }
+```
 1. `sudo service nginx restart`
-1. clone your repo and run `npm i` then `npm start`
+1. clone your repo and run `npm i` then `npm run prod &`, the & will push app into background, to stop type `fg` then press `ctrl+c`
 Feel free to change any of the config or use a different reverse proxy, you should also make sure you are using correct user permissions  
-The app should be live at the URL of your ec2 instace
+The app should be live at the URL of your ec2 instace. You should also look into running the app as a service in case it crashes.
