@@ -9,12 +9,17 @@ To start run `npm start`
   - `server/routes/index.js` registers all api routes with the application
     - sub folders group together related endpoints to make code cleaner
 - `server.js` minimal setup for express server, if you need to add cors or other middleware that can be done here
+- In development and production the API server will be located at localhost:5000
+  - If you just want to run the development server run `npm run server:dev`
 
 ## Client
 - React front end, `client/public` folder doesnt have to be changed unless you want to add public files
 - App.js has the browser router set up to route different pages
   - there is a landing page at `/` and a test page at `/test`
-
+- In development the client will be located at localhost:3000
+  - If you just want to run the client development server run `npm run client:dev`
+- In production the client will be served from the API server at localhost:5000
+  - For production the React app will be built and bundled, these bundled files will be served from the Express app as static files
 ## Config
 You can change any of the start up scripts etc to what fits you best, this is just a sample repo to get an Express/React app fast.
 
