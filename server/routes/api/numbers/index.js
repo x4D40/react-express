@@ -18,4 +18,4 @@ router.get('/random', (req, res) => {
     res.json({num: Math.random()});
 })
 
-module.exports = router;
+module.exports = {router};

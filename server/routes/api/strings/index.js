@@ -4,7 +4,7 @@ const stringService = require('./service');
 const guard = require('../../guard');
 
 /**
- * Strings controller, handles all routes for /api/Strings
+ * Strings controller, handles all routes for /api/strings
  * 
  * The controller should have minimal logic,
  * If you need to query a datastore or do any complex logic,
@@ -12,7 +12,6 @@ const guard = require('../../guard');
  * 
  * Any Strings api specific logic can go in this folder
  */
-
 
 // route is GET /api/strings/reverse/:str
 // example: GET /api/strings/reverse/helloworld
@@ -28,4 +27,4 @@ router.post('/echo/:str', guard, (req, res) => {
     res.json({echo: req.params.str}) // echo
 })
 
-module.exports = router;
+module.exports = {router};

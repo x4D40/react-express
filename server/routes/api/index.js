@@ -1,25 +1,23 @@
 const express = require('express');
 const router = express.Router();
-const guard = require('../guard');
 
 /**
- * Api router
- * Add all API controllers here
+ * This code will auto load all the controllers under the api folder,
+ * make sure there is an index.js file in the folder that exports an express.Router
  */
+const { readdirSync, statSync } = require('fs')
+const { join } = require('path')
 
-const numbersController = require('./numbers');
-const stringController = require('./string');
-const dataController = require('./data');
+const dirs = readdirSync('./server/routes/api').filter(f => statSync(join('./server/routes/api', f)).isDirectory())
 
-// this controller does not require auth
-// route is /api/numbers
-router.use('/numbers/', numbersController);
-
-// route is /api/strings
-router.use('/strings/', stringController);
-
-// this entire controller requires auth, because of guard in the parameters
-// route is /api/data
-router.use('/data/', guard, dataController);
+dirs.forEach(dir => {
+    const api = require(`./${dir}`);
+    
+    if(api.guard) {
+        router.use(`/${dir}/`, api.guard, api.router);
+    }else {
+        router.use(`/${dir}/`, api.router);
+    }
+})
 
 module.exports = router;
