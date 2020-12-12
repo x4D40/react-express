@@ -1,15 +1,21 @@
-const stringApi = require('./string');
-const numbersApi = require('./numbers');
+const express = require('express');
+const api = require('./api');
+const cors = require('cors');
+const react = require('./react');
 
 // put all api routes here
 module.exports = function(app) {
 
-    // all routes that start with /api will return json
-    app.use('/api/*', function(req, res, next) {
-        res.setHeader('Content-Type', 'application/json');
-        next();
-    });
+    // if not production, enable cors so the react server can access
+    // in production the react app will be served from the api server, so this isnt needed
+    if(process.env.NODE_ENV !== 'production') {
+        app.use(cors());
+    }
 
-    stringApi(app); // register all string api endpoints
-    numbersApi(app); // register all number api endpoints
+    // api routes parse json, then pass to api router
+    app.use('/api', [express.json(), api]);
+
+    // if not api endpoint, send to react
+    // NOTE: this is a wildcard endpoint, so you cannot place other routers below this
+    app.use(react);
 }

@@ -5,9 +5,10 @@ Once you clone the repo run `npm i`
 To start run `npm start`
 
 ## Server
-- `server/routes` folder contains all api routes, changes response type to `application/json`
-  - `server/routes/index.js` registers all api routes with the application
-    - sub folders group together related endpoints to make code cleaner
+- `server/routes` folder contains all routes
+  - `server/routes/index.js` registers all routes with the application
+    - `api` sub folders group together related endpoints to make code cleaner
+    - the `react` folder is setup to serve react from the api server only in production mode
 - `server.js` minimal setup for express server, if you need to add cors or other middleware that can be done here
 - In development and production the API server will be located at localhost:5000
   - If you just want to run the development server run `npm run server:dev`
@@ -20,6 +21,8 @@ To start run `npm start`
   - If you just want to run the client development server run `npm run client:dev`
 - In production the client will be served from the API server at localhost:5000
   - For production the React app will be built and bundled, these bundled files will be served from the Express app as static files
+- Note: if you are debugging and looking at the network tab, if running in dev mode aka `npm start` you may see some extra HTTP requests where the HTTP method is `OPTIONS`, and the response code 204, you can ignore these as these are CORS preflight messages and will not be there in production mode.
+
 ## Config
 You can change any of the start up scripts etc to what fits you best, this is just a sample repo to get an Express/React app fast.
 

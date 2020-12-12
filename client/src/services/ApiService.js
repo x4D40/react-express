@@ -17,19 +17,19 @@ function mapResponse(response) {
 }
 
 function _get(route, config = null) {
-    return axios.get(proxy(route), config).then(res => mapResponse(res));
+    return axios({method: 'GET', ...config, url: proxy(route)}).then(res => mapResponse(res));
 }
 
 function _post(route, config = null) {
-    return axios.post(proxy(route), config).then(res => res);
+    return axios({method: 'POST', ...config, url: proxy(route)}).then(res => mapResponse(res));
 }
 
 function _put(route, config = null) {
-    return axios.put(proxy(route), config).then(res => res);
+    return axios({method: 'PUT', ...config, url: proxy(route)}).then(res => mapResponse(res));
 }
 
 function _delete(route, config = null) {
-    return axios.delete(proxy(route), config);
+    return axios({method: 'DELETE', ...config, url: proxy(route)}).then(res => mapResponse(res));
 }
 
 export {
